@@ -22,7 +22,7 @@ plugins {
 	id 'java'
 }
 
-group = 'org.thinkit'
+group = 'org.thinkit.houlai'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '15'
 
