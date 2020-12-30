@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.houlai;
+package org.thinkit.houlai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
