@@ -25,8 +25,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  */
 @SpringBootApplication
-public class HoulaiApplication {
+public final class HoulaiApplication {
 
+	/**
+	 * 鳳来アプリケーションのエントリーポイントです。
+	 *
+	 * @param args コマンドライン引数
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(HoulaiApplication.class, args);
 	}
