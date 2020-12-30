@@ -12,15 +12,19 @@
  * the License.
  */
 
+import io.franzbecker.gradle.lombok.task.DelombokTask
+
 plugins {
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'com.palantir.git-version' version '0.12.3'
+    id 'io.franzbecker.gradle-lombok' version '4.0.0'
 	id 'java'
 }
 
 group = 'org.thinkit'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '15'
 
 configurations {
 	compileOnly {
@@ -29,8 +33,19 @@ configurations {
 }
 
 repositories {
-	mavenCentral()
+    maven {
+        name = 'GitHubPackages'
+        url = uri('https://maven.pkg.github.com/myConsciousness/houlai')
+        credentials {
+            username = System.getenv('GITHUB_USER')
+            password = System.getenv('GITHUB_DOWNLOAD_PACKAGE_TOKEN')
+        }
+    }
+
+    jcenter()
 }
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -42,8 +57,46 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.2'
+    implementation 'org.thinkit.framework.envali:entity-validator:v1.0.3'
+    implementation 'org.thinkit.framework.content:content-framework:v1.0.5'
+	implementation 'org.thinkit.generator.catalog.engine:catalog-generator-engine:v1.0.0'
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
+
+    testLogging {
+        showStandardStreams true
+        events 'started', 'skipped', 'passed', 'failed'
+        exceptionFormat 'full'
+    }
+}
+
+lombok {
+    version = "1.18.16"
+}
+
+task delombok( type: DelombokTask ) {
+    description = 'Generates delomboked source.'
+
+    sourceSets.all {
+        if ( it.name != SourceSet.TEST_SOURCE_SET_NAME ) {
+            it.allJava.srcDirs.each {
+                args( it, '-d', "${buildDir}/${delombok.name}" )
+            }
+        }
+    }
+}
+
+javadoc {
+    dependsOn delombok
+
+    source = file( "${buildDir}/${delombok.name}" )
+    title = 'Houlai'
+    options.links('https://docs.oracle.com/en/java/javase/13/docs/api/')
+    options.charSet("utf-8")
+    options.showFromPublic()
+    destinationDir = file('./docs')
 }
