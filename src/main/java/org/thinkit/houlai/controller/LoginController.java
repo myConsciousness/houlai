@@ -36,8 +36,8 @@ public final class LoginController {
         return "login";
     }
 
-    @PostMapping
-    public String login(@ModelAttribute("loginForm") LoginForm form) {
+    @PostMapping("/login")
+    public String login(@ModelAttribute LoginForm loginForm) {
         return "dashboard";
     }
 }
