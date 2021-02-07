@@ -20,6 +20,7 @@ import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
@@ -53,8 +54,11 @@ public final class HoulaiErrorController implements ErrorController {
     private static Map<String, Object> getErrorAttributes(HttpServletRequest req) {
         // DefaultErrorAttributes クラスで詳細なエラー情報を取得する
         ServletWebRequest swr = new ServletWebRequest(req);
-        DefaultErrorAttributes dea = new DefaultErrorAttributes(true);
-        return dea.getErrorAttributes(swr, true);
+        DefaultErrorAttributes dea = new DefaultErrorAttributes();
+        ErrorAttributeOptions eao = ErrorAttributeOptions.of(ErrorAttributeOptions.Include.BINDING_ERRORS,
+                ErrorAttributeOptions.Include.EXCEPTION, ErrorAttributeOptions.Include.MESSAGE,
+                ErrorAttributeOptions.Include.STACK_TRACE);
+        return dea.getErrorAttributes(swr, eao);
     }
 
     /**
