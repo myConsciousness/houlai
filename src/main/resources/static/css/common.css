@@ -1,15 +1,26 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url(../font/Ubuntu_Mono/UbuntuMono-Regular.ttf);
+}
+
 html {
   height: 100%;
-  width: 100%;
-  margin: 0;
 }
 
 body {
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic,
-    "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo,
-    Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  height: 100%;
+  margin: 0;
+  font-family: "Ubuntu Mono";
   background: url(../img/login_background.png) center no-repeat;
   background-size: cover;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #form-frame {
