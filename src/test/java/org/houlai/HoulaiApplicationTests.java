@@ -14,13 +14,10 @@
 
 package org.houlai;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
+// @SpringBootTest
 class HoulaiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	// @Test
+	// void contextLoads() {
+	// }
 }

@@ -21,11 +21,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * ソース管理アプリケーション「鳳来」のエントリーポイントです。
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 @SpringBootApplication
-public final class HoulaiApplication {
+public class HoulaiApplication {
 
 	/**
 	 * 鳳来アプリケーションのエントリーポイントです。
