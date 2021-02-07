@@ -16,8 +16,10 @@ package org.thinkit.houlai.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.thinkit.houlai.form.LoginForm;
 
 /**
  * 認証画面のイベント処理を管理するコントローラークラスです。
@@ -26,10 +28,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since 1.0.0
  */
 @Controller
-public final class Login {
+public final class LoginController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping
     public String index(final Model model) {
+        model.addAttribute("loginForm", LoginForm.newInstance());
         return "login";
+    }
+
+    @PostMapping
+    public String login(@ModelAttribute("loginForm") LoginForm form) {
+        return "dashboard";
     }
 }
