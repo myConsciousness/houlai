@@ -9,11 +9,16 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" media="all" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" media="all" th:href="@{/css/login.css}" />
     <title>Login</title>
   </head>
   <body>
-    <form action="#" th:action="@{/login}" th:object="${loginForm}">
+    <form
+      action="#"
+      th:action="@{/login}"
+      th:object="${loginForm}"
+      method="post"
+    >
       <div class="container">
         <div class="wrapper flex pt-5">
           <div class="shadow p-3" id="form-frame">
