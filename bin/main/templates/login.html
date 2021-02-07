@@ -9,12 +9,95 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <title>Authentication</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <title>Login</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Hello World</h1>
-      <button type="button" class="btn btn-primary">Primary</button>
-    </div>
+    <form action="" method="post">
+      <div class="container">
+        <div id="wrapper" class="mt-5">
+          <div class="shadow p-3 mb-5 bg-white mx-auto" id="form-frame">
+            <header class="mt-4 text-center">
+              <h1 id="app-name" class="font-weight-bold">Smartlist</h1>
+              <h2 id="app-slogan" class="small">
+                Manage smart everything you need to do.
+              </h2>
+            </header>
+
+            <div id="main" class="mt-5">
+              <div id="forms-box" class="mx-auto">
+                <div id="form-group-email-or-username" class="form-group">
+                  <input
+                    type="text"
+                    id="input-form-email-or-username"
+                    class="form-control"
+                    aria-describedby="emailHelp"
+                    placeholder="メールアドレスまたはユーザ名"
+                    required
+                  />
+                </div>
+                <div id="form-group-password" class="form-group text-center">
+                  <input
+                    type="password"
+                    id="input-form-password"
+                    class="form-control"
+                    placeholder="パスワード"
+                    required
+                  />
+                  <p id="validate-messsage" class="small text-danger mt-2">
+                    ログイン情報を再度確認してください。
+                  </p>
+                </div>
+                <div
+                  id="checkbox-rememberme"
+                  class="form-group form-check text-center"
+                >
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="rememberme"
+                  />
+                  <label class="form-check-label" for="rememberme"
+                    >30日間はログイン状態を維持する</label
+                  >
+                </div>
+
+                <div id="form-group-login-button" class="mt-4 mb-4 text-center">
+                  <button id="btn-login" class="btn btn-success">
+                    ログイン
+                  </button>
+                </div>
+
+                <div id="form-group-forgot-password" class="mt-3 text-center">
+                  <p>パスワードを忘れた方</p>
+                  <a
+                    id="link-forgot-password"
+                    class="small text-success font-weight-bold"
+                    href="{{ url('/reset-password') }}"
+                    >パスワードを再設定する</a
+                  >
+                </div>
+
+                <div id="form-group-sign-up" class="mt-3 text-center">
+                  <p>アカウントをお持ちでない方</p>
+                  <a
+                    id="link-sign-up"
+                    class="small text-success font-weight-bold"
+                    href="{{ url('/signup') }}"
+                    >アカウントを作成する</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <footer class="mt-5 mb-0 small text-center">
+              <p>
+                Copyright &copy; 2020-2021 Kato Shinya. All rights reserved.
+              </p>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </form>
   </body>
 </html>
