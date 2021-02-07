@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since 1.0.0
  */
 @Controller
-public final class AuthenticationController {
+public final class Login {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(final Model model) {
-        return "html/authentication";
+        return "login";
     }
 }
