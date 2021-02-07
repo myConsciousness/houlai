@@ -1,66 +1,50 @@
-@charset "UTF-8";
-
-@font-face {
-  font-family: "Ubuntu Mono";
-  src: url(../font/Ubuntu_Mono/UbuntuMono-Regular.ttf);
-}
+@import "./common.scss";
 
 html {
-  height: 100%;
-}
+  body {
+    background: url(../img/login_background.png) center no-repeat;
+    background-size: cover;
+  }
 
-body {
-  height: 100%;
-  margin: 0;
-  font-family: "Ubuntu Mono";
-  background: url(../img/login_background.png) center no-repeat;
-  background-size: cover;
-}
+  #form-frame {
+    background-color: aliceblue;
+    opacity: 0.9;
+    max-width: 512px;
+    border-radius: 7%;
+  }
 
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  #from-other-platforms {
+    max-width: 200px;
+  }
 
-#form-frame {
-  background-color: aliceblue;
-  opacity: 0.9;
-  max-width: 512px;
-  border-radius: 7%;
-}
+  #from-other-platforms .btn {
+    padding: 8px 24px;
+    color: black;
+    opacity: 0.8;
+    border-radius: 8px;
+    border: 2px solid #d0d0d0;
+    cursor: pointer;
+  }
 
-#from-other-platforms {
-  max-width: 200px;
-}
+  #from-other-platforms .btn:hover {
+    background-color: #f8f8f8;
+    opacity: 1;
+  }
 
-#from-other-platforms .btn {
-  padding: 8px 24px;
-  color: black;
-  opacity: 0.8;
-  border-radius: 8px;
-  border: 2px solid #d0d0d0;
-  cursor: pointer;
-}
+  .fa {
+    margin-right: 5px;
+  }
 
-#from-other-platforms .btn:hover {
-  background-color: #f8f8f8;
-  opacity: 1;
-}
+  #validate-messsage {
+    display: none;
+  }
 
-.fa {
-  margin-right: 5px;
-}
+  #forms-box {
+    max-width: 312px;
+  }
 
-#validate-messsage {
-  display: none;
-}
-
-#forms-box {
-  max-width: 312px;
-}
-
-#forms-box button {
-  color: whitesmoke;
-  width: 312px;
+  #forms-box button {
+    color: whitesmoke;
+    width: 312px;
+  }
 }

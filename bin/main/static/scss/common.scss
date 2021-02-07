@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url(../font/Ubuntu_Mono/UbuntuMono-Regular.ttf);
+}
+
+html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: "Ubuntu Mono";
+  }
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

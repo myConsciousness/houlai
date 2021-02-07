@@ -11,8 +11,6 @@ html body {
   height: 100%;
   margin: 0;
   font-family: "Ubuntu Mono";
-  background: url(../img/login_background.png) center no-repeat;
-  background-size: cover;
 }
 
 html .flex {
@@ -25,6 +23,11 @@ html .flex {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+html body {
+  background: url(../img/login_background.png) center no-repeat;
+  background-size: cover;
 }
 
 html #form-frame {

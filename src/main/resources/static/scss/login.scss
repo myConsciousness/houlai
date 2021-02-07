@@ -1,23 +1,9 @@
-@font-face {
-  font-family: "Ubuntu Mono";
-  src: url(../font/Ubuntu_Mono/UbuntuMono-Regular.ttf);
-}
+@import "./common.scss";
 
 html {
-  height: 100%;
-
   body {
-    height: 100%;
-    margin: 0;
-    font-family: "Ubuntu Mono";
     background: url(../img/login_background.png) center no-repeat;
     background-size: cover;
-  }
-
-  .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   #form-frame {
