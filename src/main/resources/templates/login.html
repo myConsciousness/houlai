@@ -15,12 +15,9 @@
       <div class="container">
         <div class="wrapper flex pt-5">
           <div class="shadow p-3" id="form-frame">
-            <header class="text-center">
-              <h1 id="app-name" class="font-weight-bold">Houlai</h1>
-              <h2 id="app-slogan" class="small">
-                Integrated source management system.
-              </h2>
-            </header>
+            <div class="text-center">
+              <div th:replace="common/header_fragment :: header_fragment"></div>
+            </div>
 
             <div id="main">
               <div id="forms-box" class="mx-auto">
@@ -54,8 +51,9 @@
                 >
                   <input
                     type="checkbox"
-                    class="form-check-input"
                     id="rememberme"
+                    class="form-check-input"
+                    th:field="*{rememberMe}"
                   />
                   <label class="form-check-label" for="rememberme"
                     >Remember me</label

@@ -43,4 +43,9 @@ public final class LoginForm implements Serializable {
      * パスワード
      */
     private String password;
+
+    /**
+     * ログイン記憶
+     */
+    private boolean rememberMe;
 }
