@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head
+    th:replace="common/head_fragment :: head_fragment(title = 'Overview', links = ~{::link})"
+  >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/overview.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <div th:insert="common/navigation_fragment :: navigation_fragment"></div>
+      <main>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+      <div th:insert="common/footer_fragment :: footer_fragment"></div>
+    </div>
+  </body>
+</html>
