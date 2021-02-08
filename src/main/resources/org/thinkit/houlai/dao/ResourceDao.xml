@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.thinkit.houlai.dao.ResourceDao">
+    <select id="findById" resultType="org.thinkit.houlai.entity.Resource">
+        SELECT
+            ID,
+            RESOURCE_NAME,
+            EXTENSION,
+            RESOURCE_TYPE
+         FROM
+            RESOURCE
+         WHERE
+            ID = #{id}
+</select>
+    <select id="findAll" resultType="org.thinkit.houlai.entity.Resource">
+        SELECT
+            ID,
+            RESOURCE_NAME,
+            EXTENSION,
+            RESOURCE_TYPE
+         FROM
+            RESOURCE
+</select>
+</mapper>
