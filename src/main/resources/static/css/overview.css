@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=overview.css.map */
+html body #search {
+  text-align: right;
+  bottom: 0;
+}
+
+html body #search button {
+  width: 150px;
+}
+/*# sourceMappingURL=overview.css.map */
