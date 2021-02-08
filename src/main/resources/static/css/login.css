@@ -1,4 +1,6 @@
 html body {
+  height: 100%;
+  margin: 0;
   background: url(../img/login_background.png) center no-repeat;
   background-size: cover;
 }
