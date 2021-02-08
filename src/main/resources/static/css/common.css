@@ -5,6 +5,23 @@
 
 html {
   height: 100%;
+  width: 100%;
+  /* ==========================================================================
+   #FORM
+   ========================================================================== */
+  /* CHECKBOX */
+  /* ==========================================================================
+   #SELECT
+   ========================================================================== */
+  /* ==========================================================================
+   #CARD
+   ========================================================================== */
+  /* ==========================================================================
+   #NAVGATION
+   ========================================================================== */
+  /* ==========================================================================
+   #FOOTER
+   ========================================================================== */
 }
 
 html body {
@@ -31,15 +48,8 @@ html .flex {
           align-items: center;
 }
 
-html #footer {
-  text-align: center;
-}
-
-/* ==========================================================================
-   #FORM
-   ========================================================================== */
-input,
-textarea {
+html input,
+html textarea {
   outline: none;
   margin: 0;
   border: none;
@@ -50,20 +60,20 @@ textarea {
   font-family: inherit;
 }
 
-input:disabled {
+html input:disabled {
   background: transparent;
   cursor: pointer;
 }
 
-textarea {
+html textarea {
   resize: none;
 }
 
-button {
+html button {
   cursor: pointer;
 }
 
-.input-group {
+html .input-group {
   position: relative;
   border-bottom: 2px solid #cccccc;
   margin-bottom: 41px;
@@ -75,12 +85,12 @@ button {
   align-items: center;
 }
 
-.input-group-icon {
+html .input-group-icon {
   position: relative;
   width: 100%;
 }
 
-.input-icon {
+html .input-icon {
   font-size: 24px;
   color: #808080;
   position: absolute;
@@ -93,13 +103,13 @@ button {
   cursor: pointer;
 }
 
-.input-icon::before {
+html .input-icon::before {
   display: block;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 
-.label {
+html .label {
   font-size: 18px;
   color: #333;
   text-transform: capitalize;
@@ -108,42 +118,41 @@ button {
   white-space: nowrap;
 }
 
-.input--style-1 {
+html .input--style-1 {
   font-weight: 700;
   font-size: 18px;
   padding: 15px 0;
   color: #666;
 }
 
-.input--style-1::-webkit-input-placeholder {
+html .input--style-1::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: #ccc;
 }
 
-.input--style-1:-moz-placeholder {
+html .input--style-1:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   color: #ccc;
   opacity: 1;
 }
 
-.input--style-1::-moz-placeholder {
+html .input--style-1::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   color: #ccc;
   opacity: 1;
 }
 
-.input--style-1:-ms-input-placeholder {
+html .input--style-1:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #ccc;
 }
 
-.input--style-1:-ms-input-placeholder {
+html .input--style-1:-ms-input-placeholder {
   /* Microsoft Edge */
   color: #ccc;
 }
 
-/* CHECKBOX */
-.checkbox-container {
+html .checkbox-container {
   display: inline-block;
   position: relative;
   padding-left: 30px;
@@ -156,13 +165,13 @@ button {
   user-select: none;
 }
 
-.checkbox-container input {
+html .checkbox-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.checkmark {
+html .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -173,21 +182,21 @@ button {
   border-radius: 3px;
 }
 
-.checkbox-container input:checked ~ .checkmark {
+html .checkbox-container input:checked ~ .checkmark {
   background-color: transparent;
 }
 
-.checkmark:after {
+html .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.checkbox-container input:checked ~ .checkmark:after {
+html .checkbox-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-.checkbox-container .checkmark:after {
+html .checkbox-container .checkmark:after {
   left: 4px;
   top: 2px;
   width: 7px;
@@ -198,21 +207,31 @@ button {
   transform: rotate(45deg);
 }
 
-/* ==========================================================================
-   #CARD
-   ========================================================================== */
-.card {
-  background: #fff;
+html select {
+  border: none !important;
+}
+
+html .card {
   margin: 40px;
   padding: 20px;
 }
 
-/* ==========================================================================
-   #Table
-   ========================================================================== */
-.card {
-  background: #fff;
-  margin: 40px;
-  padding: 20px;
+html .navbar-brand {
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  font-size: 40px;
+}
+
+html #navbarSupportedContent {
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-left: 15px;
+}
+
+html #footer {
+  text-align: center;
 }
 /*# sourceMappingURL=common.css.map */
