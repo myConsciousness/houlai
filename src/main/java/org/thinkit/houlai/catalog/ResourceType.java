@@ -29,9 +29,9 @@ import lombok.RequiredArgsConstructor;
 public enum ResourceType implements Catalog<ResourceType> {
 
     /**
-     * 設計
+     * ドキュメント
      */
-    DESIGN(0),
+    DOCUMENT(0),
 
     /**
      * 設定
@@ -39,7 +39,7 @@ public enum ResourceType implements Catalog<ResourceType> {
     CONFIG(1),
 
     /**
-     * プログラム
+     * 実装
      */
     PROGRAM(2),
 
