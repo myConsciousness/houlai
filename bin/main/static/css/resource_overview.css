@@ -1,0 +1,9 @@
+html body #search {
+  text-align: right;
+  bottom: 0;
+}
+
+html body #search button {
+  width: 150px;
+}
+/*# sourceMappingURL=resource_overview.css.map */
