@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+  <head
+    th:replace="common/head_fragment :: head_fragment(title = 'Dashboard', links = ~{::link})"
+  >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dashboard.css}" />
   </head>
   <body>
-    <h1 th:text="${loginForm.userId}"></h1>
+    <div class="container">
+      <div th:insert="common/navigation_fragment :: navigation_fragment"></div>
+      <div th:insert="common/footer_fragment :: footer_fragment"></div>
+    </div>
   </body>
 </html>

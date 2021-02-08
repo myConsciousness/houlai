@@ -15,9 +15,10 @@
       <div class="container">
         <div class="wrapper flex pt-5">
           <div class="shadow p-3" id="form-frame">
-            <div class="text-center">
-              <div th:replace="common/header_fragment :: header_fragment"></div>
-            </div>
+            <div
+              class="text-center"
+              th:insert="common/header_fragment :: header_fragment"
+            ></div>
 
             <div id="main">
               <div id="forms-box" class="mx-auto">
