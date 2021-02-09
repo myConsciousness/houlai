@@ -20,6 +20,10 @@
               th:insert="common/header_fragment :: header_fragment"
             ></div>
 
+            <div th:if="${param.error}" class="alert alert-danger">
+              The user ID or password is invalid.
+            </div>
+
             <div id="main">
               <div id="forms-box" class="mx-auto">
                 <div id="form-group-userid" class="form-group">
@@ -27,6 +31,7 @@
                     type="text"
                     id="input-form-userid"
                     class="form-control"
+                    name="userId"
                     aria-describedby="emailHelp"
                     placeholder="User ID"
                     th:field="*{userId}"
@@ -38,13 +43,11 @@
                     type="password"
                     id="input-form-password"
                     class="form-control"
+                    name="password"
                     placeholder="Password"
                     th:field="*{password}"
                     required
                   />
-                  <p id="validate-messsage" class="small text-danger">
-                    ログイン情報を再度確認してください。
-                  </p>
                 </div>
                 <div
                   id="checkbox-rememberme"
