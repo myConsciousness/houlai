@@ -1,0 +1,106 @@
+{
+    "metadata": {
+        "author": "Kato Shinya",
+        "encoding": "UTF-8",
+        "description": "リソース種別の名称を管理するコンテンツです。"
+    },
+    "selectionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "resourceTypeName": "All"
+            }
+        },
+        {
+            "node": {
+                "conditionId": "1",
+                "resourceTypeName": "Document"
+            }
+        },
+        {
+            "node": {
+                "conditionId": "2",
+                "resourceTypeName": "Config"
+            }
+        },
+        {
+            "node": {
+                "conditionId": "3",
+                "resourceTypeName": "Program"
+            }
+        },
+        {
+            "node": {
+                "conditionId": "4",
+                "resourceTypeName": "Test"
+            }
+        }
+    ],
+    "conditionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "resourceTypeCode",
+                        "operator": "=",
+                        "operand": "0"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "1",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "resourceTypeCode",
+                        "operator": "=",
+                        "operand": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "2",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "resourceTypeCode",
+                        "operator": "=",
+                        "operand": "2"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "3",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "resourceTypeCode",
+                        "operator": "=",
+                        "operand": "3"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "4",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "resourceTypeCode",
+                        "operator": "=",
+                        "operand": "4"
+                    }
+                ]
+            }
+        }
+    ]
+}
