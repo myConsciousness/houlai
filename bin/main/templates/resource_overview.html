@@ -26,12 +26,15 @@
                     <label class="label">Resource Type:</label>
                     <select
                       class="form-select input--style-1"
+                      th:field="*{resourceType}"
                       aria-label="Default select example"
                     >
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option
+                        th:each="resourceType : ${resourceTypes}"
+                        th:value="${resourceType.value}"
+                      >
+                        [[${resourceType.key}]]
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -42,6 +45,7 @@
                     <input
                       class="input--style-1"
                       type="text"
+                      th:field="*{resourceName}"
                       placeholder="SampleObject"
                     />
                   </div>
@@ -53,6 +57,7 @@
                     <input
                       class="input--style-1"
                       type="text"
+                      th:field="*{extension}"
                       placeholder="java"
                     />
                   </div>
