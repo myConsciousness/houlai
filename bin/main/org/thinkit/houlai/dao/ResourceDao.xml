@@ -12,7 +12,7 @@
          WHERE
             ID = #{id}
 </select>
-    <select id="findAll" resultType="org.thinkit.houlai.entity.Resource">
+    <select id="findOverview" resultType="org.thinkit.houlai.entity.Resource">
         SELECT
             ID,
             RESOURCE_NAME,
@@ -20,5 +20,22 @@
             RESOURCE_TYPE
          FROM
             RESOURCE
-</select>
+         WHERE
+            1 = 1
+        <if test="resourceType != {@org.thinkit.houlai.catalog.ResourceType@NONE}">
+            <![CDATA[
+            AND RESOURCE_TYPE = #{resourceType.code}
+            ]]>
+        </if>
+        <if test="resourceName != ''">
+            <![CDATA[
+            AND RESOURCE_NAME = #{resourceName}
+            ]]>
+        </if>
+        <if test="extension != ''">
+            <![CDATA[
+            AND EXTENSION = #{extension}
+            ]]>
+        </if>
+    </select>
 </mapper>
