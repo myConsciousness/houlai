@@ -29,23 +29,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @since 1.0.0
  */
 @EnableWebSecurity
-public final class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/webjars/**", "/css/**");
+        web.ignoring().antMatchers("/webjars/**", "/css/**", "/img/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated().and().formLogin()
                 .loginProcessingUrl("/login").loginPage("/login").failureUrl("/login?error")
-                .defaultSuccessUrl("/dashboard", true).usernameParameter("name").passwordParameter("password").and()
+                .defaultSuccessUrl("/dashboard", true).usernameParameter("userId").passwordParameter("password").and()
                 .logout().logoutSuccessUrl("/login");
     }
 
     @Bean
-    private PasswordEncoder passwordEncoder() {
+    protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
