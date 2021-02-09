@@ -6,12 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
   </head>
   <body>
-    <form
-      action="#"
-      th:action="@{/login}"
-      th:object="${loginForm}"
-      method="post"
-    >
+    <form th:action="@{/login}" th:object="${loginForm}" method="post">
       <div class="container">
         <div class="wrapper flex pt-5">
           <main class="shadow p-3" id="form-frame">
@@ -65,7 +60,9 @@
                 </div>
 
                 <div id="form-group-login-button" class="text-center">
-                  <button id="btn-login" class="btn btn-success">Login</button>
+                  <button type="submit" id="btn-login" class="btn btn-success">
+                    Login
+                  </button>
                 </div>
 
                 <div id="form-group-forgot-password" class="text-center">

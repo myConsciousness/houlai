@@ -58,5 +58,4 @@ public final class ResourceService {
     public List<Resource> findAll() {
         return this.resourceDao.findAll();
     }
-
 }
