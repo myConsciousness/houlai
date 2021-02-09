@@ -11,6 +11,30 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
+-- USER ACCOUNT Table
+INSERT INTO
+  USER_ACCOUNT (
+    USER_ID,
+    PASSWORD,
+    USER_FIRST_NAME,
+    USER_LAST_NAME,
+    CREATION_USER,
+    CREATED_AT,
+    UPDATE_USER,
+    UPDATED_AT
+  )
+VALUES
+  (
+    'M000001',
+    '$2a$10$FxoxIbxWaboSCWw.A3AJDOf70voqnkMfur7vNWP7yDRfXE2aCLV56',
+    'Shinya',
+    'Kato',
+    'M000001',
+    NOW(),
+    'M000001',
+    NOW()
+  );
+-- RESOURCE Table
 INSERT INTO
   RESOURCE (
     RESOURCE_NAME,
@@ -67,3 +91,4 @@ VALUES
     'M000001',
     NOW()
   );
+commit;
