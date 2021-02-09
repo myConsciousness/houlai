@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.thinkit.houlai.dao.UserAccountDao">
+    <select id="findByUserId" resultType="org.thinkit.houlai.entity.UserAccount">
+        SELECT
+            ID,
+            USER_ID,
+            USER_NAME,
+            PASSWORD
+         FROM
+            USER_ACCOUNT
+         WHERE
+            ID = #{userId}
+</select>
+</mapper>
