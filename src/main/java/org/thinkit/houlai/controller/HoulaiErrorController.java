@@ -14,7 +14,6 @@
 
 package org.thinkit.houlai.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -25,11 +24,12 @@ import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import lombok.NonNull;
 
 @Controller
 @RequestMapping("/error")
@@ -46,39 +46,6 @@ public final class HoulaiErrorController implements ErrorController {
     }
 
     /**
-     * エラー情報を抽出する。
-     *
-     * @param req リクエスト情報
-     * @return エラー情報
-     */
-    private static Map<String, Object> getErrorAttributes(HttpServletRequest req) {
-        // DefaultErrorAttributes クラスで詳細なエラー情報を取得する
-        ServletWebRequest swr = new ServletWebRequest(req);
-        DefaultErrorAttributes dea = new DefaultErrorAttributes();
-        ErrorAttributeOptions eao = ErrorAttributeOptions.of(ErrorAttributeOptions.Include.BINDING_ERRORS,
-                ErrorAttributeOptions.Include.EXCEPTION, ErrorAttributeOptions.Include.MESSAGE,
-                ErrorAttributeOptions.Include.STACK_TRACE);
-        return dea.getErrorAttributes(swr, eao);
-    }
-
-    /**
-     * レスポンス用の HTTP ステータスを決める。
-     *
-     * @param req リクエスト情報
-     * @return レスポンス用 HTTP ステータス
-     */
-    private static HttpStatus getHttpStatus(HttpServletRequest req) {
-        // HTTP ステータスを決める
-        // ここでは 404 以外は全部 500 にする
-        Object statusCode = req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        if (statusCode != null && statusCode.toString().equals("404")) {
-            status = HttpStatus.NOT_FOUND;
-        }
-        return status;
-    }
-
-    /**
      * HTML レスポンス用の ModelAndView オブジェクトを返す。
      *
      * @param req リクエスト情報
@@ -86,61 +53,55 @@ public final class HoulaiErrorController implements ErrorController {
      * @return HTML レスポンス用の ModelAndView オブジェクト
      */
     @RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
-    public ModelAndView myErrorHtml(HttpServletRequest req, ModelAndView mav) {
+    public ModelAndView get(@NonNull final ModelAndView modelAndView,
+            @NonNull final HttpServletRequest httpServletRequest) {
 
-        // エラー情報を取得
-        Map<String, Object> attr = getErrorAttributes(req);
+        final HttpStatus status = this.getHttpStatus(httpServletRequest);
+        modelAndView.addObject("status", status.value());
+        modelAndView.setStatus(status);
 
-        // HTTP ステータスを決める
-        HttpStatus status = getHttpStatus(req);
+        this.getErrorAttributes(httpServletRequest).forEach((key, value) -> {
+            modelAndView.addObject(key, value);
+        });
 
-        // HTTP ステータスをセットする
-        mav.setStatus(status);
+        modelAndView.setViewName("error");
 
-        // ビュー名を指定する
-        // Thymeleaf テンプレートの場合は src/main/resources/templates/error.html
-        mav.setViewName("error");
-
-        // 出力したい情報をセットする
-        mav.addObject("status", status.value());
-        mav.addObject("timestamp", attr.get("timestamp"));
-        mav.addObject("error", attr.get("error"));
-        mav.addObject("exception", attr.get("exception"));
-        mav.addObject("message", attr.get("message"));
-        mav.addObject("errors", attr.get("errors"));
-        mav.addObject("trace", attr.get("trace"));
-        mav.addObject("path", attr.get("path"));
-
-        return mav;
+        return modelAndView;
     }
 
     /**
-     * JSON レスポンス用の ResponseEntity オブジェクトを返す。
+     * HTTPサーブレットリクエストから詳細エラー情報を抽出し返却します。
      *
-     * @param req リクエスト情報
-     * @return JSON レスポンス用の ResponseEntity オブジェクト
+     * @param httpServletRequest HTTPサーブレットリクエスト
+     * @return 詳細エラー情報
+     *
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    @RequestMapping
-    public ResponseEntity<Map<String, Object>> myErrorJson(HttpServletRequest req) {
+    private Map<String, Object> getErrorAttributes(@NonNull final HttpServletRequest httpServletRequest) {
+        return new DefaultErrorAttributes().getErrorAttributes(new ServletWebRequest(httpServletRequest),
+                ErrorAttributeOptions.of(ErrorAttributeOptions.Include.BINDING_ERRORS,
+                        ErrorAttributeOptions.Include.EXCEPTION, ErrorAttributeOptions.Include.MESSAGE,
+                        ErrorAttributeOptions.Include.STACK_TRACE));
+    }
 
-        // エラー情報を取得
-        Map<String, Object> attr = getErrorAttributes(req);
+    /**
+     * HTTPサーブレットリクエストからHTTPステータスを抽出し返却します。
+     *
+     * @param httpServletRequest HTTPサーブレットリクエスト
+     * @return HTTPステータス
+     *
+     * @exception NullPointerException 引数として {@code null} が渡された場合
+     */
+    private HttpStatus getHttpStatus(@NonNull final HttpServletRequest httpServletRequest) {
 
-        // HTTP ステータスを決める
-        HttpStatus status = getHttpStatus(req);
+        final Object statusCode = httpServletRequest.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-        // 出力したい情報をセットする
-        Map<String, Object> body = new HashMap<>();
-        body.put("status", status.value());
-        body.put("timestamp", attr.get("timestamp"));
-        body.put("error", attr.get("error"));
-        body.put("exception", attr.get("exception"));
-        body.put("message", attr.get("message"));
-        body.put("errors", attr.get("errors"));
-        body.put("trace", attr.get("trace"));
-        body.put("path", attr.get("path"));
+        for (HttpStatus httpStatus : HttpStatus.values()) {
+            if (String.valueOf(httpStatus.value()).equals(statusCode.toString())) {
+                return httpStatus;
+            }
+        }
 
-        // 情報を JSON で出力する
-        return new ResponseEntity<>(body, status);
+        throw new IllegalStateException();
     }
 }
