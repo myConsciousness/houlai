@@ -40,12 +40,17 @@ public final class UserAccount implements Serializable {
     private String userId;
 
     /**
-     * ユーザー名
-     */
-    private String userName;
-
-    /**
      * パスワード
      */
     private String password;
+
+    /**
+     * ユーザー名（名前）
+     */
+    private String userFirstName;
+
+    /**
+     * ユーザー名（名字）
+     */
+    private String userLastName;
 }

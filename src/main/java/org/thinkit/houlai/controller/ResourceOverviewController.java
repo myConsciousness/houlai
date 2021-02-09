@@ -14,6 +14,22 @@
 
 package org.thinkit.houlai.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.thinkit.houlai.form.LoginForm;
+
+@Controller
 public final class ResourceOverviewController {
 
+    @GetMapping("resource/overview")
+    public String index(@ModelAttribute LoginForm loginForm) {
+        return "resource_overview";
+    }
+
+    @PostMapping("resource/overview/search")
+    public String search(@ModelAttribute LoginForm loginForm) {
+        return "resource_overview";
+    }
 }

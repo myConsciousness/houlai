@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.thinkit.houlai.form.LoginForm;
 
 /**
@@ -28,6 +29,7 @@ import org.thinkit.houlai.form.LoginForm;
  * @since 1.0.0
  */
 @Controller
+@RequestMapping("login")
 public final class LoginController {
 
     @GetMapping
@@ -36,8 +38,8 @@ public final class LoginController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String login(@ModelAttribute LoginForm loginForm) {
-        return "dashboard";
+    @PostMapping
+    public String postLogin(@ModelAttribute LoginForm loginForm) {
+        return "redirect:/dashboard";
     }
 }

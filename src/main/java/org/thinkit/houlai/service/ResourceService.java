@@ -32,16 +32,31 @@ import lombok.NonNull;
 @Service
 public final class ResourceService {
 
+    /**
+     * 「Resource」テーブルとマッピングを行うDao
+     */
     @Autowired
     ResourceDao resourceDao;
 
+    /**
+     * 引数として渡された一意のIDに紐づくレコードを取得します。
+     *
+     * @param id 一意のID
+     * @return 引数として渡された一意のIDに紐づくレコード
+     *
+     * @exception NullPointerException 引数として {@code null} が渡された場合
+     */
     public Resource findById(@NonNull final Integer id) {
-
-        return null;
+        return this.resourceDao.findById(id);
     }
 
+    /**
+     * 全件検索を行います。
+     *
+     * @return 全レコード分のEntityを格納したリスト
+     */
     public List<Resource> findAll() {
-        return null;
+        return this.resourceDao.findAll();
     }
 
 }
