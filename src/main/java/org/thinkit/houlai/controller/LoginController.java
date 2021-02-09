@@ -32,12 +32,24 @@ import org.thinkit.houlai.form.LoginForm;
 @RequestMapping("login")
 public final class LoginController {
 
+    /**
+     * ログイン画面を初期化し開設します。
+     *
+     * @param model 画面リクエストマッピング
+     * @return ログイン画面のリソース
+     */
     @GetMapping
-    public String index(final Model model) {
+    public String index(Model model) {
         model.addAttribute("loginForm", LoginForm.newInstance());
         return "login";
     }
 
+    /**
+     * 認証処理が完了した場合にダッシュボード画面へリダイレクトします。
+     *
+     * @param loginForm ログインフォーム
+     * @return ダッシュボード画面へのリダイレクトコマンド
+     */
     @PostMapping
     public String postLogin(@ModelAttribute LoginForm loginForm) {
         return "redirect:/dashboard";

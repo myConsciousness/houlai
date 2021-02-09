@@ -48,23 +48,28 @@ public final class ResourceOverviewController {
     @Autowired
     ResourceService resourceService;
 
+    /**
+     * リソース概要画面を初期化し開設します。
+     *
+     * @param model 画面リクエストマッピング
+     * @return リソース概要画面のリソース
+     */
     @GetMapping("resource/overview")
     public String index(Model model) {
 
-        final Map<String, Object> resourceTypes = new LinkedMap<>();
-
-        Arrays.asList(ResourceType.values()).forEach(resourceType -> {
-            final String ResourceTypeName = ContentInvoker.of(ResourceTypeNameLoader.from(resourceType)).invoke()
-                    .getResourceTypeName();
-            resourceTypes.put(ResourceTypeName, String.valueOf(resourceType.getCode()));
-        });
-
-        model.addAttribute("resourceTypes", resourceTypes);
+        model.addAttribute("resourceTypes", this.createResourceTypeOptions());
         model.addAttribute("resourceOverviewForm", ResourceOverviewForm.newInstance());
 
         return "resource_overview";
     }
 
+    /**
+     * 画面に入力された値を基に検索処理を行いリソース概要画面を再読込します。
+     *
+     * @param model                画面リクエストマッピング
+     * @param resourceOverviewForm リソース概要フォーム
+     * @return リソース概要画面のリソース
+     */
     @PostMapping("resource/overview/search")
     public String search(Model model, @ModelAttribute ResourceOverviewForm resourceOverviewForm) {
 
@@ -76,8 +81,28 @@ public final class ResourceOverviewController {
 
         final List<Resource> resources = this.resourceService.findOverview(resourceType,
                 resourceOverviewForm.getResourceName(), resourceOverviewForm.getExtension());
+
+        model.addAttribute("resourceTypes", this.createResourceTypeOptions());
         model.addAttribute("resources", resources);
 
         return "resource_overview";
+    }
+
+    /**
+     * リソース種別のプルダウン要素を生成し返却します。
+     *
+     * @return リソース種別のプルダウン要素
+     */
+    private Map<String, Object> createResourceTypeOptions() {
+
+        final Map<String, Object> resourceTypes = new LinkedMap<>();
+
+        Arrays.asList(ResourceType.values()).forEach(resourceType -> {
+            final String ResourceTypeName = ContentInvoker.of(ResourceTypeNameLoader.from(resourceType)).invoke()
+                    .getResourceTypeName();
+            resourceTypes.put(ResourceTypeName, String.valueOf(resourceType.getCode()));
+        });
+
+        return resourceTypes;
     }
 }
