@@ -29,24 +29,29 @@ import lombok.RequiredArgsConstructor;
 public enum ResourceType implements Catalog<ResourceType> {
 
     /**
+     * なし
+     */
+    NONE(0),
+
+    /**
      * ドキュメント
      */
-    DOCUMENT(0),
+    DOCUMENT(1),
 
     /**
      * 設定
      */
-    CONFIG(1),
+    CONFIG(2),
 
     /**
      * 実装
      */
-    PROGRAM(2),
+    PROGRAM(3),
 
     /**
      * テスト
      */
-    TEST(3);
+    TEST(4);
 
     /**
      * コード値
