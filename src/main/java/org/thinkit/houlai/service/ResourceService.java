@@ -14,10 +14,13 @@
 
 package org.thinkit.houlai.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thinkit.houlai.catalog.ResourceType;
 import org.thinkit.houlai.dao.ResourceDao;
 import org.thinkit.houlai.entity.Resource;
 
@@ -51,11 +54,23 @@ public final class ResourceService {
     }
 
     /**
-     * 全件検索を行います。
+     * 引数として渡された値に紐づくレコードを取得します。
      *
-     * @return 全レコード分のEntityを格納したリスト
+     * @param resourceType リソース種別
+     * @param resourceName リソース名
+     * @param extension    拡張子
+     * @return 引数として渡された値に紐づくレコード
+     *
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    public List<Resource> findAll() {
-        return this.resourceDao.findAll();
+    public List<Resource> findOverview(@NonNull ResourceType resourceType, @NonNull String resourceName,
+            @NonNull String extension) {
+
+        final Map<String, Object> criteria = new HashMap<>(3);
+        criteria.put("resourceType", resourceType);
+        criteria.put("resourceName", resourceName);
+        criteria.put("extension", extension);
+
+        return this.resourceDao.findOverview(criteria);
     }
 }

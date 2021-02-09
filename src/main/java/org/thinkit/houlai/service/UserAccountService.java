@@ -44,7 +44,7 @@ public final class UserAccountService {
      *
      * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    public UserAccount findById(@NonNull final String userId) {
+    public UserAccount findByUserId(@NonNull final String userId) {
         return this.userAccountDao.findByUserId(userId);
     }
 }

@@ -15,6 +15,7 @@
 package org.thinkit.houlai.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.thinkit.houlai.entity.Resource;
@@ -41,9 +42,12 @@ public interface ResourceDao {
     public Resource findById(@NonNull final Integer id);
 
     /**
-     * 全件検索を行います。
+     * 引数として渡された値に紐づくレコードを取得します。
      *
-     * @return 全レコード分のEntityを格納したリスト
+     * @param criteria 検索条件
+     * @return 引数として渡された値に紐づくレコード
+     *
+     * @exception NullPointerException 引数として {@code null} が渡された場合
      */
-    public List<Resource> findAll();
+    public List<Resource> findOverview(@NonNull Map<String, Object> criteria);
 }

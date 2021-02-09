@@ -35,9 +35,9 @@ public final class ResourceOverviewForm implements Serializable {
     private static final long serialVersionUID = 5113598328999371825L;
 
     /**
-     * リソース種別コード
+     * リソース種別
      */
-    private int resourceTypeCode;
+    private int resourceType;
 
     /**
      * リソース名

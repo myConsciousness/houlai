@@ -42,7 +42,7 @@ public final class LoginUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(@NonNull final String userId) throws UsernameNotFoundException {
 
-        final UserAccount userAccount = this.userAccountService.findById(userId);
+        final UserAccount userAccount = this.userAccountService.findByUserId(userId);
 
         if (userAccount == null) {
             throw new UsernameNotFoundException("Wrong email or password");

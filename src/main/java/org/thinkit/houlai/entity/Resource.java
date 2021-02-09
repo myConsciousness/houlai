@@ -14,6 +14,8 @@
 
 package org.thinkit.houlai.entity;
 
+import org.thinkit.houlai.catalog.ResourceType;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -45,5 +47,5 @@ public final class Resource {
     /**
      * リソース種別
      */
-    private Integer resourceType;
+    private ResourceType resourceType;
 }

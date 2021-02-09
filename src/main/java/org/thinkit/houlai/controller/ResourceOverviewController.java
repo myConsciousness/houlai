@@ -22,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.thinkit.api.catalog.Catalog;
+import org.thinkit.houlai.catalog.ResourceType;
 import org.thinkit.houlai.entity.Resource;
 import org.thinkit.houlai.form.ResourceOverviewForm;
 import org.thinkit.houlai.service.ResourceService;
@@ -50,7 +52,14 @@ public final class ResourceOverviewController {
     @PostMapping("resource/overview/search")
     public String search(Model model, @ModelAttribute ResourceOverviewForm resourceOverviewForm) {
 
-        final List<Resource> resources = this.resourceService.findAll();
+        final ResourceType resourceType = Catalog.getEnum(ResourceType.class, resourceOverviewForm.getResourceType());
+
+        if (resourceType == null) {
+            throw new IllegalStateException();
+        }
+
+        final List<Resource> resources = this.resourceService.findOverview(resourceType,
+                resourceOverviewForm.getResourceName(), resourceOverviewForm.getExtension());
         model.addAttribute("resources", resources);
 
         return "resource_overview";
