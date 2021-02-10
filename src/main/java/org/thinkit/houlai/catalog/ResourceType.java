@@ -51,7 +51,12 @@ public enum ResourceType implements Catalog<ResourceType> {
     /**
      * テスト
      */
-    TEST(4);
+    TEST(4),
+
+    /**
+     * SQL
+     */
+    SQL(5);
 
     /**
      * コード値
