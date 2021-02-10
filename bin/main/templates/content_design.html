@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head
+    th:replace="common/head_fragment :: head_fragment(title = 'Content Design', links = ~{::link})"
+  >
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/css/content_design.css}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div th:insert="common/navigation_fragment :: navigation_fragment"></div>
+      <div th:insert="common/footer_fragment :: footer_fragment"></div>
+    </div>
+  </body>
+</html>
