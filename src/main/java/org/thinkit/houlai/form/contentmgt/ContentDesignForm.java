@@ -51,11 +51,6 @@ public final class ContentDesignForm implements Serializable {
     private String description;
 
     /**
-     * 条件ID
-     */
-    private String conditionId;
-
-    /**
      * コンテンツ設計行
      */
     private List<SelectionDesignRow> selectionDesignRows;

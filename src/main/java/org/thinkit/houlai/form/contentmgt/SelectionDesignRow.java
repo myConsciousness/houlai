@@ -34,4 +34,8 @@ public final class SelectionDesignRow implements Serializable {
      */
     private static final long serialVersionUID = -9180313577874603349L;
 
+    /**
+     * 条件ID
+     */
+    private String conditionId;
 }

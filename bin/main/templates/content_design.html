@@ -12,6 +12,106 @@
   <body>
     <div class="container">
       <div th:insert="common/navigation_fragment :: navigation_fragment"></div>
+
+      <main>
+        <form
+          th:action="@{/content/design}"
+          th:object="${contentDesignForm}"
+          method="post"
+        >
+          <div class="card card-2">
+            <div class="card-body">
+              <div class="row row-space">
+                <div class="col-6">
+                  <div class="input-group">
+                    <label class="label">Package Name:</label>
+                    <input
+                      class="input--style-1"
+                      type="text"
+                      th:field="*{packageName}"
+                      placeholder="org.thinkit.houlai"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="input-group">
+                    <label class="label">Content Name:</label>
+                    <input
+                      class="input--style-1"
+                      type="text"
+                      th:field="*{contentName}"
+                      placeholder="SampleContent"
+                    />
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="input-group">
+                    <label class="label">Description:</label>
+                    <textarea
+                      class="form-control input--style-1"
+                      th:field="*{description}"
+                      placeholder="Some description..."
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="col-4"></div>
+              </div>
+
+              <div id="generate">
+                <button
+                  type="submit"
+                  name="generate"
+                  class="btn btn-outline-success"
+                >
+                  GENERATE
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-2">
+            <div class="card-body">
+              <div id="table-wrapper">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Condition ID</th>
+                      <th>Selections</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      th:each="row,selectionDesignRow : *{selectionDesignRows}"
+                    >
+                      <td>
+                        <input
+                          type="text"
+                          th:field="*{selectionDesignRows[__${selectionDesignRow.index}__].conditionId}"
+                        />
+                      </td>
+                      <td>
+                        <button
+                          type="submit"
+                          class="btn"
+                          th:value="${selectionDesignRow.index}"
+                          name="removeSelectionRow"
+                        >
+                          -
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="submit" class="btn" name="addSelectionRow">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+
       <div th:insert="common/footer_fragment :: footer_fragment"></div>
     </div>
   </body>
