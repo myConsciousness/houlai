@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public final class DashboardController {
 
     @GetMapping("dashboard")
-    public String index(final Model model) {
+    public String index(Model model) {
         return "dashboard";
     }
 }

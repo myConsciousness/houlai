@@ -14,9 +14,17 @@
 
 package org.thinkit.houlai.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.thinkit.houlai.form.contentmgt.ContentDesignForm;
+import org.thinkit.houlai.form.contentmgt.SelectionDesignRow;
 
 /**
  * コンテンツデザイン画面のイベント処理を管理するコントローラーです。
@@ -29,6 +37,26 @@ public final class ContentDesignController {
 
     @GetMapping("content/design")
     public String index(Model model) {
+
+        final ContentDesignForm contentDesignForm = ContentDesignForm.newInstance();
+        contentDesignForm.setSelectionDesignRows(List.of(SelectionDesignRow.newIsntance()));
+
+        model.addAttribute("contentDesignForm", contentDesignForm);
+        model.addAttribute("selectionDesigns", contentDesignForm.getSelectionDesignRows());
+
+        return "content_design";
+    }
+
+    @PostMapping(value = "content/design", params = "addSelection")
+    public String addList(@ModelAttribute ContentDesignForm contentDesignForm, Model model) {
+        contentDesignForm.addSelectionRow();
+        return "content_design";
+    }
+
+    @PostMapping(value = "content/design", params = "removeSelection")
+    public String removeList(@ModelAttribute ContentDesignForm contentDesignForm, Model model,
+            HttpServletRequest request) {
+        contentDesignForm.removeSelectionRow(Integer.valueOf(request.getParameter("remove")));
         return "content_design";
     }
 }
