@@ -30,7 +30,7 @@ import org.thinkit.framework.content.ContentInvoker;
 import org.thinkit.houlai.catalog.ResourceType;
 import org.thinkit.houlai.content.ResourceTypeNameLoader;
 import org.thinkit.houlai.entity.Resource;
-import org.thinkit.houlai.form.ResourceOverviewForm;
+import org.thinkit.houlai.form.resourcemgt.ResourceOverviewForm;
 import org.thinkit.houlai.service.ResourceService;
 
 /**
