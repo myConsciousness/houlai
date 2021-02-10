@@ -231,7 +231,30 @@ html #navbarSupportedContent {
   margin-left: 15px;
 }
 
-html #footer {
+html #footer #copyright {
   text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+html #footer #copyright p {
+  width: 100%;
+  padding: 0px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-top: 0px;
+}
+
+html #footer #copyright .social-links {
+  margin-bottom: 0px;
+}
+
+html #footer #copyright .social-links a {
+  color: #ffffff !important;
+}
+
+html #footer #copyright .social-links a:hover {
+  color: #e31b6d !important;
 }
 /*# sourceMappingURL=common.css.map */

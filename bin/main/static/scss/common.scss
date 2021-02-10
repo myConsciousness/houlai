@@ -232,6 +232,31 @@ html {
    #FOOTER
    ========================================================================== */
   #footer {
-    text-align: center;
+    #copyright {
+      text-align: center;
+      padding-top: 50px;
+      padding-bottom: 50px;
+
+      p {
+        width: 100%;
+        padding: 0px;
+        text-align: center;
+        font-size: 13px;
+        letter-spacing: 1px;
+        margin-top: 0px;
+      }
+
+      .social-links {
+        margin-bottom: 0px;
+
+        a {
+          color: #ffffff !important;
+
+          &:hover {
+            color: #e31b6d !important;
+          }
+        }
+      }
+    }
   }
 }
