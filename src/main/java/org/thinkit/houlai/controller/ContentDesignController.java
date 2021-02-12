@@ -14,17 +14,12 @@
 
 package org.thinkit.houlai.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.thinkit.houlai.form.contentmgt.ContentDesignForm;
-import org.thinkit.houlai.form.contentmgt.SelectionDesignRow;
 
 /**
  * コンテンツデザイン画面のイベント処理を管理するコントローラーです。
@@ -35,12 +30,10 @@ import org.thinkit.houlai.form.contentmgt.SelectionDesignRow;
 @Controller
 public final class ContentDesignController {
 
-    @GetMapping(value = "content/design")
+    @GetMapping("content/design")
     public String index(@ModelAttribute ContentDesignForm contentDesignForm) {
 
-        final List<SelectionDesignRow> selectionDesignRows = new ArrayList<>();
-        selectionDesignRows.add(SelectionDesignRow.newIsntance());
-        contentDesignForm.setSelectionDesignRows(selectionDesignRows);
+        contentDesignForm.addSelectionRow();
 
         return "content_design";
     }
@@ -52,8 +45,9 @@ public final class ContentDesignController {
     }
 
     @PostMapping(value = "content/design", params = "removeSelectionRow")
-    public String removeSelectionRow(@ModelAttribute ContentDesignForm contentDesignForm, HttpServletRequest request) {
-        contentDesignForm.removeSelectionRow(Integer.valueOf(request.getParameter("remove")));
+    public String removeSelectionRow(@ModelAttribute ContentDesignForm contentDesignForm,
+            @RequestAttribute("removeSelectionRow") String selectionRowIndex) {
+        contentDesignForm.removeSelectionRow(Integer.valueOf(selectionRowIndex));
         return "content_design";
     }
 }

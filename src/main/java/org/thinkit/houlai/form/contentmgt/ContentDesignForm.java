@@ -15,6 +15,7 @@
 package org.thinkit.houlai.form.contentmgt;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -59,7 +60,12 @@ public final class ContentDesignForm implements Serializable {
      * 選択行を追加します。
      */
     public void addSelectionRow() {
-        selectionDesignRows.add(SelectionDesignRow.newIsntance());
+
+        if (this.selectionDesignRows == null) {
+            this.selectionDesignRows = new ArrayList<>();
+        }
+
+        selectionDesignRows.add(new SelectionDesignRow());
     }
 
     /**
@@ -68,8 +74,11 @@ public final class ContentDesignForm implements Serializable {
      * @param index 画面で選択された選択リスト項目のインデックス
      */
     public void removeSelectionRow(int index) {
-        if (selectionDesignRows.size() > 1) {
-            selectionDesignRows.remove(index);
+
+        if (this.selectionDesignRows == null || this.selectionDesignRows.isEmpty()) {
+            return;
         }
+
+        selectionDesignRows.remove(index);
     }
 }

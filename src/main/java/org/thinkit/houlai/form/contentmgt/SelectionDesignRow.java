@@ -17,7 +17,6 @@ package org.thinkit.houlai.form.contentmgt;
 import java.io.Serializable;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * コンテンツ設計画面で入力された行情報を管理するクラスです。
@@ -26,7 +25,6 @@ import lombok.NoArgsConstructor;
  * @since 1.0.0
  */
 @Data
-@NoArgsConstructor(staticName = "newIsntance")
 public final class SelectionDesignRow implements Serializable {
 
     /**
