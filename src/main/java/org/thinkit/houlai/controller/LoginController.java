@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.thinkit.houlai.catalog.TemplateName;
+import org.thinkit.houlai.catalog.resolver.TemplateNameResolver;
 import org.thinkit.houlai.form.LoginForm;
-import org.thinkit.houlai.util.TemplateNameResolver;
 
 /**
  * 認証画面のイベント処理を管理するコントローラークラスです。

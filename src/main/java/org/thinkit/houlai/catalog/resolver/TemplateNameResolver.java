@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.houlai.util;
+package org.thinkit.houlai.catalog.resolver;
 
 import org.thinkit.houlai.catalog.TemplateName;
 
