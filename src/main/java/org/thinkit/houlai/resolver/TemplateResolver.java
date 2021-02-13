@@ -21,13 +21,13 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 /**
- * テンプレート名の取得処理を提供するクラスです。
+ * カタログ「テンプレート名」の操作を提供するクラスです。
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class TemplateNameResolver {
+public final class TemplateResolver {
 
     /**
      * 引数として渡されたテンプレート名から文字列表現を取得し返却します。
@@ -37,7 +37,7 @@ public final class TemplateNameResolver {
      *
      * @exception NullPointerException 引数として {@code null} が渡されたば場合
      */
-    public static String of(@NonNull final TemplateName templateName) {
+    public static String toString(@NonNull final TemplateName templateName) {
         return templateName.getTag();
     }
 }
