@@ -16,7 +16,7 @@
         <div class="card card-2">
           <div class="card-body">
             <form
-              th:action="@{/resource/overview/search}"
+              th:action="@{/resource/overview}"
               th:object="${resourceOverviewForm}"
               method="post"
             >
@@ -65,7 +65,11 @@
               </div>
 
               <div id="search">
-                <button type="submit" class="btn btn-outline-success">
+                <button
+                  type="submit"
+                  name="search"
+                  class="btn btn-outline-success"
+                >
                   SEARCH
                 </button>
               </div>

@@ -43,6 +43,11 @@ import org.thinkit.houlai.service.ResourceService;
 public final class ResourceOverviewController {
 
     /**
+     * 基準パス
+     */
+    private static final String BASE_PATH = "/resource/overview";
+
+    /**
      * 「Resource」テーブルを操作するサービス
      */
     @Autowired
@@ -54,11 +59,10 @@ public final class ResourceOverviewController {
      * @param model 画面リクエストマッピング
      * @return リソース概要画面のリソース
      */
-    @GetMapping("resource/overview")
-    public String index(Model model) {
+    @GetMapping(BASE_PATH)
+    public String index(@ModelAttribute ResourceOverviewForm resourceOverviewForm, Model model) {
 
         model.addAttribute("resourceTypes", this.createResourceTypeOptions());
-        model.addAttribute("resourceOverviewForm", ResourceOverviewForm.newInstance());
 
         return "resource_overview";
     }
@@ -70,7 +74,7 @@ public final class ResourceOverviewController {
      * @param resourceOverviewForm リソース概要フォーム
      * @return リソース概要画面のリソース
      */
-    @PostMapping("resource/overview/search")
+    @PostMapping(value = BASE_PATH, params = "search")
     public String search(Model model, @ModelAttribute ResourceOverviewForm resourceOverviewForm) {
 
         final ResourceType resourceType = Catalog.getEnum(ResourceType.class, resourceOverviewForm.getResourceType());

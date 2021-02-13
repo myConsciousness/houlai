@@ -31,7 +31,12 @@ import org.thinkit.houlai.form.contentmgt.ContentDesignForm;
 @Controller
 public final class ContentDesignController {
 
-    @GetMapping("content/design")
+    /**
+     * 基準パス
+     */
+    private static final String BASE_PATH = "/content/design";
+
+    @GetMapping(BASE_PATH)
     public String index(@ModelAttribute ContentDesignForm contentDesignForm) {
 
         contentDesignForm.addSelectionRow();
@@ -39,13 +44,13 @@ public final class ContentDesignController {
         return "content_design";
     }
 
-    @PostMapping(value = "content/design", params = "addSelectionRow")
+    @PostMapping(value = BASE_PATH, params = "addSelectionRow")
     public String addSelectionRow(@ModelAttribute ContentDesignForm contentDesignForm) {
         contentDesignForm.addSelectionRow();
         return "content_design";
     }
 
-    @PostMapping(value = "content/design", params = "removeSelectionRow")
+    @PostMapping(value = BASE_PATH, params = "removeSelectionRow")
     public String removeSelectionRow(@ModelAttribute ContentDesignForm contentDesignForm,
             final HttpServletRequest request) {
 
