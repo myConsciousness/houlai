@@ -15,12 +15,12 @@
 package org.thinkit.houlai.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.thinkit.houlai.catalog.TemplateName;
 import org.thinkit.houlai.form.LoginForm;
+import org.thinkit.houlai.util.TemplateNameResolver;
 
 /**
  * 認証画面のイベント処理を管理するコントローラークラスです。
@@ -29,19 +29,22 @@ import org.thinkit.houlai.form.LoginForm;
  * @since 1.0.0
  */
 @Controller
-@RequestMapping("login")
 public final class LoginController {
+
+    /**
+     * 基準パス
+     */
+    private static final String BASE_PATH = "/login";
 
     /**
      * ログイン画面を初期化し開設します。
      *
-     * @param model 画面リクエストマッピング
+     * @param loginForm ログイン画面のフォーム
      * @return ログイン画面のリソース
      */
-    @GetMapping
-    public String index(Model model) {
-        model.addAttribute("loginForm", LoginForm.newInstance());
-        return "login";
+    @GetMapping(BASE_PATH)
+    public String index(@ModelAttribute LoginForm loginForm) {
+        return TemplateNameResolver.of(TemplateName.LOGIN);
     }
 
     /**
@@ -52,6 +55,6 @@ public final class LoginController {
      */
     @PostMapping
     public String postLogin(@ModelAttribute LoginForm loginForm) {
-        return "redirect:/dashboard";
+        return "redirect:/" + TemplateNameResolver.of(TemplateName.DASHBOARD);
     }
 }
