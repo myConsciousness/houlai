@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.thinkit.houlai.catalog.TemplateName;
-import org.thinkit.houlai.catalog.resolver.TemplateNameResolver;
 import org.thinkit.houlai.form.LoginForm;
+import org.thinkit.houlai.resolver.PageTransitionResolver;
+import org.thinkit.houlai.resolver.TemplateResolver;
 
 /**
  * 認証画面のイベント処理を管理するコントローラークラスです。
@@ -44,17 +45,16 @@ public final class LoginController {
      */
     @GetMapping(BASE_PATH)
     public String index(@ModelAttribute LoginForm loginForm) {
-        return TemplateNameResolver.of(TemplateName.LOGIN);
+        return TemplateResolver.getName(TemplateName.LOGIN);
     }
 
     /**
      * 認証処理が完了した場合にダッシュボード画面へリダイレクトします。
      *
-     * @param loginForm ログインフォーム
      * @return ダッシュボード画面へのリダイレクトコマンド
      */
     @PostMapping
-    public String postLogin(@ModelAttribute LoginForm loginForm) {
-        return "redirect:/" + TemplateNameResolver.of(TemplateName.DASHBOARD);
+    public String redirectDashboard() {
+        return PageTransitionResolver.redrectTo(TemplateName.DASHBOARD);
     }
 }

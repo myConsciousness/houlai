@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.houlai.catalog.resolver;
+package org.thinkit.houlai.resolver;
 
 import org.thinkit.houlai.catalog.TemplateName;
 
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 /**
- * カタログ「テンプレート名」の操作を提供するクラスです。
+ * テンプレートに関する操作を提供するクラスです。
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -37,7 +37,7 @@ public final class TemplateResolver {
      *
      * @exception NullPointerException 引数として {@code null} が渡されたば場合
      */
-    public static String toString(@NonNull final TemplateName templateName) {
+    public static String getName(@NonNull final TemplateName templateName) {
         return templateName.getTag();
     }
 }

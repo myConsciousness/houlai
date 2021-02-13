@@ -15,14 +15,26 @@
 package org.thinkit.houlai.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.thinkit.houlai.catalog.TemplateName;
+import org.thinkit.houlai.resolver.TemplateResolver;
 
+/**
+ * ダッシュボード画面のイベント処理を管理するコントローラーです。
+ *
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 @Controller
 public final class DashboardController {
 
-    @GetMapping("dashboard")
-    public String index(Model model) {
-        return "dashboard";
+    /**
+     * 基準パス
+     */
+    private static final String BASE_PATH = "/dashboard";
+
+    @GetMapping(BASE_PATH)
+    public String index() {
+        return TemplateResolver.getName(TemplateName.DASHBOARD);
     }
 }

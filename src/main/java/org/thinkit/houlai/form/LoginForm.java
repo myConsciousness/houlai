@@ -20,7 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * ログイン画面で入力された情報を管理するフォームクラスです。
+ * ログイン画面のフォームクラスです。
  *
  * @author Kato Shinya
  * @since 1.0.0
