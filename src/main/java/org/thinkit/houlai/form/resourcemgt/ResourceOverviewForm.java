@@ -20,7 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * リソース概要画面で入力された情報を管理するフォームクラスです。
+ * リソース概要画面のフォームクラスです。
  *
  * @author Kato Shinya
  * @since 1.0.0

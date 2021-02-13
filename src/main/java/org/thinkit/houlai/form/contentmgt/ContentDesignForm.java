@@ -22,7 +22,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * コンテンツ設計画面で入力された情報を管理するフォームクラスです。
+ * コンテンツ設計画面のフォームクラスです。
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -75,7 +75,7 @@ public final class ContentDesignForm implements Serializable {
      */
     public void removeSelectionRow(int index) {
 
-        if (this.selectionDesignRows == null || this.selectionDesignRows.isEmpty()) {
+        if (this.selectionDesignRows == null || this.selectionDesignRows.size() <= 1) {
             return;
         }
 
