@@ -12,34 +12,34 @@
  * the License.
  */
 
-package org.thinkit.houlai.content.entity;
+package org.thinkit.houlai.content;
 
-import java.io.Serializable;
+import org.thinkit.houlai.catalog.ResourceType;
+import org.thinkit.houlai.content.entity.ResourceTypeName;
+import org.thinkit.zenna.mapper.ContentMapper;
 
-import org.thinkit.zenna.entity.ContentEntity;
-
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 /**
- * コンテンツ「リソース種別名称」の項目を管理するクラスです。
+ * コンテンツ「リソース種別名称」を読み込むクラスです。
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @ToString
-@EqualsAndHashCode
-public final class ResourceTypeName implements ContentEntity, Serializable {
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(staticName = "from")
+public final class ResourceTypeNameMapper extends ContentMapper<ResourceTypeName> {
 
     /**
-     * シリアルバージョンUID
+     * リソース種別
      */
-    private static final long serialVersionUID = 1260480518039409822L;
-
-    /**
-     * リソース種別名称
-     */
-    @Getter
-    private String resourceTypeName;
+    @NonNull
+    private ResourceType resourceType;
 }

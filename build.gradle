@@ -54,7 +54,7 @@ dependencies {
     implementation 'org.springframework.security:spring-security-web'
     implementation 'org.springframework.security:spring-security-config'
 
-	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -64,7 +64,7 @@ dependencies {
 
     implementation 'org.thinkit.api.catalog:catalog-api:v1.0.2'
     implementation 'org.thinkit.framework.envali:entity-validator:v1.0.4'
-    implementation 'org.thinkit.framework.content:content-framework:v1.1.0'
+    implementation 'org.thinkit.zenna:zenna-db:v1.0.0'
 }
 
 test {
